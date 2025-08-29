@@ -5,3 +5,23 @@ git commit -m "первый коммит"
 git branch -M main
 git remote add origin https://github.com/matvey1304krivonosov-gif/-.git
 git push -u origin main
+mkdir -p ~/Documents
+cd ~/Documents
+git clone https://github.com/leozizu/TelegramGiftsBot.git
+cd TelegramGiftsBot
+python --version
+python3 --version
+sudo apt update
+sudo apt install -y python3-venv
+python3 -m venv venv
+source venv/bin/activate
+cat > .env <<'EOF'
+TELEGRAM_BOT_TOKEN=123456:abcdef
+TELEGRAM_USER_ID=123456
+EOF
+pip install -r requirements.txt
+nohup python3 main.py >> bot.out 2>&1 &
+ps aux | grep python
+tail -n 50 bot.out
+tail -f bot.out
+kill PID
